@@ -23,6 +23,11 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.error("MongoDB connection error:", err));
 
+// Health check route
+app.get("/", (req, res) => {
+    res.json({ success: true, message: "Real-Time Expert Session Booking API is running!" });
+});
+
 // Routes
 const expertRoutes = require("./routes/expertRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
